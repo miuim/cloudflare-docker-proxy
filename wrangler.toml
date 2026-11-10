@@ -7,33 +7,38 @@ port = 8787
 local_protocol = "http"
 
 [env.vars]
-CUSTOM_DOMAIN = "libcuda.so"
+CUSTOM_DOMAIN = "miu.im"
 
 [env.dev.vars]
 MODE = "debug"
 TARGET_UPSTREAM = "https://registry-1.docker.io"
-CUSTOM_DOMAIN = "exmaple.com"
+CUSTOM_DOMAIN = "miu.im"
 
 [env.production]
 name = "cloudflare-docker-proxy"
-# routes = [
-#   { pattern = "docker.libcuda.so", custom_domain = true },
-#   { pattern = "quay.libcuda.so", custom_domain = true },
-#   { pattern = "gcr.libcuda.so", custom_domain = true },
-#   { pattern = "k8s-gcr.libcuda.so", custom_domain = true },
-#   { pattern = "k8s.libcuda.so", custom_domain = true },
-#   { pattern = "ghcr.libcuda.so", custom_domain = true },
-#   { pattern = "cloudsmith.libcuda.so", custom_domain = true },
-# ]
+routes = [
+  { pattern = "docker.miu.im", custom_domain = true },
+  { pattern = "quay.miu.im", custom_domain = true },
+  { pattern = "gcr.miu.im", custom_domain = true },
+  { pattern = "k8s-gcr.miu.im", custom_domain = true },
+  { pattern = "k8s.miu.im", custom_domain = true },
+  { pattern = "ghcr.miu.im", custom_domain = true },
+  { pattern = "cloudsmith.miu.im", custom_domain = true },
+  { pattern = "ecr.miu.im", custom_domain = true },
+]
 
 [env.production.vars]
 MODE = "production"
 TARGET_UPSTREAM = ""
+CUSTOM_DOMAIN = "miu.im"
 
 [env.staging]
 name = "cloudflare-docker-proxy-staging"
-# route = { pattern = "docker-staging.libcuda.so", custom_domain = true }
+routes = [
+  { pattern = "docker-staging.miu.im", custom_domain = true },
+]
 
 [env.staging.vars]
 MODE = "staging"
 TARGET_UPSTREAM = ""
+CUSTOM_DOMAIN = "miu.im"
